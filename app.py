@@ -42,7 +42,7 @@ def creditability():
     return(render_template("creditability.html"))
 
 @app.route("/creditability_prediction",methods=["GET","POST"])
-def creditabiity_prediction():
+def creditability_prediction():
     q = float(request.form.get("q"))
     return(render_template("credictability_prediction.html",r=1.22937616 + (-0.00011189*q)))
 
