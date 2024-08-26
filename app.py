@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import google.generativeai as palm
+import numpy as np
 
 model = {"model": "models/chat-bison-001"}
 palm.configure(api_key="AIzaSyCaQcgKn95ZO6AR1t2PXzk9UydTkt4sWZQ")
