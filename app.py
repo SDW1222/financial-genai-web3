@@ -4,7 +4,7 @@ import numpy as np
 import os
 
 model = {"model": "models/chat-bison-001"}
-palm.configure(api_key="AIzaSyCaQcgKn95ZO6AR1t2PXzk9UydTkt4sWZQ")
+palm.configure(api_key="AIzaSyCluRjLkwn6IOe4f-dNTlusyuAkDUI7fQo")
 
 app = Flask(__name__)
 user_name = ""
