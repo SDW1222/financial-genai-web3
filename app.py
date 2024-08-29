@@ -16,11 +16,6 @@ def index():
     flag = 1
     return render_template("index.html")
 
-@app.route("/joke", methods=["GET", "POST"])
-def joke():
-    joke = "Why did the chicken cross the road? To chope seat with tissue paper!'"
-    return render_template("joke.html", j=joke)
-
 @app.route("/main", methods=["GET", "POST"])
 def main():
     global flag, user_name
@@ -28,6 +23,16 @@ def main():
         user_name = request.form.get("q")
         flag = 0
     return render_template("main.html", r=user_name)
+
+
+@app.route("/joke", methods=["GET", "POST"])
+def joke():
+    joke = """Why did the Singaporean bring a tissue packet to the job interview?
+
+Answer:
+To "chope" the best seat in the waiting area!"""
+    return render_template("joke.html", j=joke)
+
 
 @app.route("/prediction", methods=["GET", "POST"])
 def prediction():
@@ -43,6 +48,7 @@ def DBS_prediction():
     q = request.form.get("q")
     q = float(q)  # Convert q to a float before using it in a calculation
     return render_template("DBS_prediction.html", r=90.2 + (-50.6 * q))
+
 
 @app.route("/creditability",methods=["GET","POST"])
 def creditability():
@@ -76,6 +82,5 @@ def makersuite_gen():
 
 if __name__ == "__main__":
     app.run()
-
 #W4
 
