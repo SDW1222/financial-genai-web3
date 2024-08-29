@@ -16,6 +16,11 @@ def index():
     flag = 1
     return render_template("index.html")
 
+@app.route("/joke", methods=["GET", "POST"])
+def joke():
+    joke = "Why did the chicken cross the road? To chope seat with tissue paper!'"
+    return render_template("joke.html", j=joke)
+
 @app.route("/main", methods=["GET", "POST"])
 def main():
     global flag, user_name
