@@ -75,10 +75,23 @@
         <form action="/makersuite" method="post">
             <input type="submit" value="Financial Q&A">
         </form>
-                <h2>Tell me a joke in Singapore</h2>
-        <p>{{j}}</p >
-        <form action="/main" method="post">
-            <input type="submit" value="Main">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singapore Joke</title>
+</head>
+<body>
+    <h2>Tell me a joke in Singapore</h2>
+    <p>{{ j or "No joke available at the moment!" }}</p>
+    <br>
+    <form action="/main" method="get">
+        <input type="submit" value="Main" aria-label="Go to main page">
+    </form>
+</body>
+</html>
+
         </form>
         <form action="/" method="post">
             <input type="submit" value="End">
