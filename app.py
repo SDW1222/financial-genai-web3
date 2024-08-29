@@ -25,6 +25,14 @@ def main():
         flag = 0
     return(render_template("main.html",r=user_name))
 
+@app.route("/joke", methods=["GET", "POST"])
+def joke():
+    joke = """Why did the Singaporean bring a tissue packet to the job interview?
+
+Answer:
+To "chope" the best seat in the waiting area!"""
+    return render_template("joke.html", j=joke)
+
 @app.route("/prediction",methods=["GET","POST"])
 def prediction():
     return(render_template("prediction.html"))
