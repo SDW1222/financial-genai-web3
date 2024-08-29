@@ -5,7 +5,7 @@ import numpy as np
 
 api = os.getenv("MAKERSUITE_API_TOKEN")
 model = {"model":"models/chat-bison-001"}
-palm.configure(api_key=api)
+palm.configure(api_key=AIzaSyCluRjLkwn6IOe4f-dNTlusyuAkDUI7fQo)
 
 app = Flask(__name__)
 user_name = ""
