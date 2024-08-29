@@ -65,11 +65,6 @@
 </head>
 <body>
     <div class="container">
-        <h2>Tell me a joke in Singapore</h2>
-        <p>{{j}}</p >
-        <form action="/main" method="post">
-            <input type="submit" value="Main">
-        </form>
         <h2>Hi, {{r}}, how can I help you today?</h2>
         <form action="/prediction" method="post">
             <input type="submit" value="Share Price Prediction">
@@ -80,8 +75,16 @@
         <form action="/makersuite" method="post">
             <input type="submit" value="Financial Q&A">
         </form>
+                <h2>Tell me a joke in Singapore</h2>
+        <p>{{j}}</p >
+        <form action="/main" method="post">
+            <input type="submit" value="Main">
+        </form>
         <form action="/" method="post">
             <input type="submit" value="End">
+        <form action="/" method="post">
+            <input type="submit" value="End">
+        </form>
         </form>
     </div>
 </body>
