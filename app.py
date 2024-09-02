@@ -3,7 +3,7 @@ import google.generativeai as palm
 import os
 import numpy as np
 from textblob import TextBlob
-from transformers import pipeline
+
 
 
 
@@ -113,6 +113,31 @@ def makersuite_gen():
         response_text = "An error occurred while processing your request."
     return render_template("makersuite_gen_reply.html", r=response_text)
 
+@app.route("/sentiment", methods=["GET", "POST"])
+def sentiment():
+    if request.method == "POST":
+        # Get the input text from the form
+        input_text = request.form.get("text")
+        
+        # Check if the input text is not None or empty
+        if input_text:
+            # Perform sentiment analysis
+            blob = TextBlob(input_text)
+            sentiment = blob.sentiment
+            
+            # Extract polarity and subjectivity
+            polarity = sentiment.polarity
+            subjectivity = sentiment.subjectivity
+            
+            # Render the results in the template
+            return render_template("sentiment_result.html", text=input_text, polarity=polarity, subjectivity=subjectivity)
+        else:
+            # Handle the case where no text was entered
+            error_message = "Please enter some text to analyze."
+            return render_template("sentiment.html", error=error_message)
+    
+    # Render the input form if the request method is GET
+    return render_template("sentiment.html")
 
 if __name__ == "__main__":
     app.run()
