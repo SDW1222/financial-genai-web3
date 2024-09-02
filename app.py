@@ -89,7 +89,5 @@ def makersuite_gen():
     return render_template("makersuite_gen_reply.html", r=response_text)
 
 
-
-
 if __name__ == "__main__":
     app.run()
