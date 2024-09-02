@@ -3,6 +3,7 @@ import google.generativeai as palm
 import os
 import numpy as np
 from textblob import TextBlob
+pip install -r requirements.txt
 
 
 api = os.getenv("MAKERSUITE_API_TOKEN")
