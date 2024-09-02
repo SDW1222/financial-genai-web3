@@ -6,7 +6,6 @@ from textblob import TextBlob
 
 
 
-
 api = os.getenv("MAKERSUITE_API_TOKEN")
 model = {"model": "models/text-bison-001"}
 palm.configure(api_key="AIzaSyCluRjLkwn6IOe4f-dNTlusyuAkDUI7fQo")
