@@ -2,6 +2,10 @@ from flask import Flask,render_template,request
 import google.generativeai as palm
 import os
 import numpy as np
+from textblob import TextBlob
+from transformers import pipeline
+
+
 
 api = os.getenv("MAKERSUITE_API_TOKEN")
 model = {"model": "models/text-bison-001"}
@@ -61,6 +65,27 @@ def creditability_prediction():
     r = np.where(r >= 0.5, "yes","no")
     r = str(r)
     return(render_template("creditability_prediction.html",r=r))
+
+@app.route("/sentiment_analysis", methods=["GET", "POST"])
+def sentiment_analysis():
+    sentiment_textblob = None
+    sentiment_transformers = None
+
+    if request.method == "POST":
+        text = request.form.get("text")  # Get the input text from the form
+        
+        # Perform sentiment analysis using TextBlob
+        sentiment_textblob = analyze_sentiment_textblob(text)
+        
+        # Perform sentiment analysis using transformers
+        sentiment_transformers = analyze_sentiment_transformers(text)
+    
+    return render_template(
+        "sentiment_analysis.html", 
+        sentiment_textblob=sentiment_textblob,
+        sentiment_transformers=sentiment_transformers
+    )
+
 
 @app.route("/makersuite", methods=["GET", "POST"])
 def makersuite():
