@@ -1,0 +1,97 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transfer money</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='styles.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="payer" placeholder="Enter Payer Address : ">
+        <input type="text" id="payee" placeholder="Enter Payee Address : ">
+        <input type="text" id="amount" placeholder="Enter the Amount : ">
+
+        <button class="btn" onclick="transfer()">Transfer</button>
+        <button class="btn" onclick="transaction()">View Transaction</button>
+
+        <p id="view_payer"></p>
+        <p id="view_payee"></p>
+        <p id="view_amount"></p>
+
+        <h2>Transfer Money</h2>
+        <form action="/main" method="post">
+            <input type="submit" value="Main">
+        </form>
+
+        <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+        <script>
+            const contractAddress= "0x1f81840ee1d749b6f1e12e98241d50f17494bbfa"
+            const contractABI = [
+                {
+                    "inputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "constructor"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "uint256",
+                            "name": "amount_wx",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "payer_wx",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "payee_wx",
+                            "type": "address"
+                        }
+                    ],
+                    "name": "weixin",
+                    "outputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "function"
+                },
+                {
+                    "inputs": [],
+                    "name": "check_transaction",
+                    "outputs": [
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "",
+                            "type": "uint256"
+                        }
+                    ],
+                    "stateMutability": "view",
+                    "type": "function"
+                }
+            ]
+
+            const web3 = new Web3(Web3.givenProvider);
+            const contract = new web3.eth.Contract(contractABI,contractAddress);
+
+            async function transfer() {
+                const account = await web3.eth.requestAccounts();
+                console.log(account[0]);
+            }
+
+            async function transaction() {
+            }
+
+        </script>
+
+    </div>
+</body>
