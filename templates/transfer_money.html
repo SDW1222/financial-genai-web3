@@ -90,7 +90,7 @@
                 const payee = document.getElementById("payee").value;
                 const amount = document.getElementById("amount").value;
                 console.log(payer,payee,amount);
-                await contract.method.weixin(amount,payer,payee).sent({from:account[0]})
+                await contract.methods.weixin(amount,payer,payee).sent({from:account[0]})
             }
 
             async function transaction() {
