@@ -127,5 +127,9 @@ def sentiment():
     # Render the input form if the request method is GET
     return render_template("sentiment.html")
 
+@app.route("/transfer_money",methods=["GET","POST"])
+def transfer_money():
+    return(render_template("transfer_money.html"))
+
 if __name__ == "__main__":
     app.run()
